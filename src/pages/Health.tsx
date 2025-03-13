@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Activity, FilePlus, Thermometer, Virus } from 'lucide-react';
+import { Activity, FilePlus, Thermometer, Biohazard } from 'lucide-react';
 import Layout from '@/components/Layout';
 import VaccinationCard from '@/components/VaccinationCard';
 import StatCard from '@/components/StatCard';
@@ -21,7 +21,7 @@ const Health: React.FC = () => {
           <StatCard 
             title="Risk Level"
             value="Low Risk"
-            icon={<Virus className="w-5 h-5 text-pandemic-green" />}
+            icon={<Biohazard className="w-5 h-5 text-pandemic-green" />}
             variant="success"
           />
           <StatCard 
