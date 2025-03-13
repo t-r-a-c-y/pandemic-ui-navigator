@@ -4,8 +4,9 @@ import Layout from '../components/Layout';
 import StatCard from '../components/StatCard';
 import VaccinationCard from '../components/VaccinationCard';
 import MapView from '../components/MapView';
-import { Activity, AlertTriangle, ArrowRight, Calendar, Heart, MapPin, Shield, User } from 'lucide-react';
+import { Activity, AlertTriangle, ArrowRight, Calendar, Heart, MapPin, Shield, User, Info } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 const Index = () => {
   const navigate = useNavigate();
@@ -23,11 +24,24 @@ const Index = () => {
           </div>
         </div>
         
+        <div className="status-chip bg-pandemic-red/10 text-pandemic-red inline-flex items-center mb-4">
+          <AlertTriangle className="w-3 h-3 mr-1" />
+          <span>Urgent: New outbreak reported</span>
+        </div>
+        
+        <Card className="mb-6 border-pandemic-red/20 bg-pandemic-red/5">
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm font-medium text-pandemic-red flex items-center">
+              <Info className="w-4 h-4 mr-1" />
+              Pandemic Alert
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-sm">A new virus variant has been detected in your region. Health authorities recommend wearing masks in crowded areas and getting your booster shot.</p>
+          </CardContent>
+        </Card>
+        
         <div className="mb-8">
-          <div className="status-chip bg-pandemic-blue/10 text-pandemic-blue inline-flex items-center mb-2">
-            <AlertTriangle className="w-3 h-3 mr-1" />
-            <span>New outbreak alert in your area</span>
-          </div>
           <h2 className="text-xl font-bold mb-3">Pandemic Statistics</h2>
           <div className="grid grid-cols-2 gap-3">
             <StatCard 
@@ -61,6 +75,22 @@ const Index = () => {
         
         <div className="mb-8">
           <div className="flex items-center justify-between mb-3">
+            <h2 className="text-xl font-bold">Pandemic Map</h2>
+            <button className="text-sm font-medium text-pandemic-blue flex items-center" onClick={() => navigate('/map')}>
+              View Full Map
+              <ArrowRight className="w-4 h-4 ml-1" />
+            </button>
+          </div>
+          <div className="h-80 w-full overflow-hidden rounded-2xl shadow-lg border border-border">
+            <MapView />
+          </div>
+          <p className="text-xs text-muted-foreground mt-2 text-center">
+            Visualizing current pandemic spread. Red indicates high infection rates.
+          </p>
+        </div>
+        
+        <div className="mb-8">
+          <div className="flex items-center justify-between mb-3">
             <h2 className="text-xl font-bold">Your Vaccination</h2>
             <button className="text-sm font-medium text-pandemic-blue flex items-center" onClick={() => navigate('/health')}>
               View Details
@@ -89,19 +119,6 @@ const Index = () => {
               location="Community Health Center"
               status="scheduled"
             />
-          </div>
-        </div>
-        
-        <div className="mb-8">
-          <div className="flex items-center justify-between mb-3">
-            <h2 className="text-xl font-bold">Risk Zones</h2>
-            <button className="text-sm font-medium text-pandemic-blue flex items-center" onClick={() => navigate('/map')}>
-              View Map
-              <ArrowRight className="w-4 h-4 ml-1" />
-            </button>
-          </div>
-          <div className="h-72 w-full overflow-hidden rounded-2xl">
-            <MapView />
           </div>
         </div>
         
