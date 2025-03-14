@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import { Bell, Search } from 'lucide-react';
 
 interface HeaderProps {
@@ -24,6 +24,10 @@ const Header: React.FC<HeaderProps> = ({ title }) => {
         return 'Risk Map';
       case '/resources':
         return 'Resources';
+      case '/notifications':
+        return 'Notifications';
+      case '/search':
+        return 'Search';
       case '/auth':
         return 'Sign In';
       default:
@@ -40,13 +44,13 @@ const Header: React.FC<HeaderProps> = ({ title }) => {
       <div className="flex items-center justify-between max-w-screen-sm mx-auto">
         <h1 className="text-xl font-semibold tracking-tight">{getPageTitle()}</h1>
         <div className="flex items-center space-x-4">
-          <button className="relative w-10 h-10 rounded-full flex items-center justify-center bg-secondary text-muted-foreground transition-colors hover:bg-secondary/80">
+          <Link to="/search" className="relative w-10 h-10 rounded-full flex items-center justify-center bg-secondary text-muted-foreground transition-colors hover:bg-secondary/80">
             <Search size={20} />
-          </button>
-          <button className="relative w-10 h-10 rounded-full flex items-center justify-center bg-secondary text-muted-foreground transition-colors hover:bg-secondary/80">
+          </Link>
+          <Link to="/notifications" className="relative w-10 h-10 rounded-full flex items-center justify-center bg-secondary text-muted-foreground transition-colors hover:bg-secondary/80">
             <Bell size={20} />
             <span className="absolute top-1 right-1 w-2.5 h-2.5 bg-pandemic-red rounded-full border-2 border-white"></span>
-          </button>
+          </Link>
         </div>
       </div>
     </header>
