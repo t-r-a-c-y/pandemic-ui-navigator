@@ -2,6 +2,8 @@
 import React from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import { Bell, Search } from 'lucide-react';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { useAuth } from '@/contexts/AuthContext';
 
 interface HeaderProps {
   title?: string;
@@ -9,6 +11,7 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ title }) => {
   const location = useLocation();
+  const { user, isAuthenticated } = useAuth();
   
   const getPageTitle = () => {
     if (title) return title;
@@ -30,6 +33,8 @@ const Header: React.FC<HeaderProps> = ({ title }) => {
         return 'Search';
       case '/auth':
         return 'Sign In';
+      case '/profile':
+        return 'My Profile';
       default:
         return 'PandemicNet';
     }
@@ -51,6 +56,20 @@ const Header: React.FC<HeaderProps> = ({ title }) => {
             <Bell size={20} />
             <span className="absolute top-1 right-1 w-2.5 h-2.5 bg-pandemic-red rounded-full border-2 border-white"></span>
           </Link>
+          {isAuthenticated ? (
+            <Link to="/profile">
+              <Avatar className="h-10 w-10 border-2 border-white shadow-sm">
+                <AvatarImage src={user?.avatar} alt={user?.name} />
+                <AvatarFallback className="bg-pandemic-blue text-white">
+                  {user?.name?.split(' ').map(n => n[0]).join('').toUpperCase()}
+                </AvatarFallback>
+              </Avatar>
+            </Link>
+          ) : (
+            <Link to="/auth" className="text-sm font-medium text-pandemic-blue hover:text-pandemic-blue/90">
+              Sign In
+            </Link>
+          )}
         </div>
       </div>
     </header>
