@@ -22,7 +22,19 @@ const Profile: React.FC = () => {
   const { user, isAuthenticated, logout, updateProfile } = useAuth();
   const navigate = useNavigate();
   const [isEditing, setIsEditing] = useState(false);
-  const [editedUser, setEditedUser] = useState(user || {});
+  
+  // Fix: properly type the editedUser state by using Partial<User> instead of empty object
+  const [editedUser, setEditedUser] = useState<Partial<{
+    id: string;
+    name: string;
+    email: string;
+    avatar?: string;
+    phone?: string;
+    address?: string;
+    dob?: string;
+    healthStatus?: 'normal' | 'at-risk' | 'infected' | 'recovered';
+    vaccinationStatus?: 'none' | 'partial' | 'fully-vaccinated' | 'boosted';
+  }>>(user || {});
   
   // Redirect if not logged in
   React.useEffect(() => {
