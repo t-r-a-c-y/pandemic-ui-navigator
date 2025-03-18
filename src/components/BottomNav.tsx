@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { Home, Heart, Calendar, Map, FileText } from 'lucide-react';
+import { Home, Heart, Calendar, Map, Bot } from 'lucide-react';
 
 const BottomNav: React.FC = () => {
   const location = useLocation();
@@ -17,7 +17,7 @@ const BottomNav: React.FC = () => {
         <NavItem to="/health" icon={<Heart size={24} />} label="Health" />
         <NavItem to="/appointments" icon={<Calendar size={24} />} label="Appointments" />
         <NavItem to="/map" icon={<Map size={24} />} label="Map" />
-        <NavItem to="/resources" icon={<FileText size={24} />} label="Resources" />
+        <NavItem to="/health-assistant" icon={<Bot size={24} />} label="AI Chat" />
       </div>
     </nav>
   );
