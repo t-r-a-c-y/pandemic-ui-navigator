@@ -1,12 +1,13 @@
-
 import React from 'react';
-import { Activity, FilePlus, Thermometer, Biohazard } from 'lucide-react';
+import { Activity, FilePlus, Thermometer, Biohazard, Stethoscope, MessageCircle } from 'lucide-react';
 import Layout from '@/components/Layout';
 import VaccinationCard from '@/components/VaccinationCard';
 import StatCard from '@/components/StatCard';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Progress } from '@/components/ui/progress';
+import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 const Health: React.FC = () => {
   return (
@@ -44,6 +45,26 @@ const Health: React.FC = () => {
               </div>
               <Progress className="h-2" value={66} />
             </div>
+          </CardContent>
+        </Card>
+
+        <Card className="mb-5">
+          <CardHeader className="pb-3">
+            <CardTitle className="text-lg flex items-center">
+              <Stethoscope className="w-5 h-5 mr-2 text-pandemic-blue" />
+              AI Health Assistant
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-sm text-muted-foreground mb-3">
+              Not feeling well? Chat with our AI Health Assistant to understand your symptoms and get basic health guidance.
+            </p>
+            <Button asChild className="w-full bg-pandemic-blue text-white font-medium rounded-xl py-3 shadow-sm hover:bg-pandemic-blue/90 transition-colors">
+              <Link to="/health-assistant">
+                <MessageCircle className="mr-2 h-4 w-4" />
+                Chat with Health Assistant
+              </Link>
+            </Button>
           </CardContent>
         </Card>
 

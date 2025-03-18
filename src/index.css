@@ -108,6 +108,14 @@
   .page-container {
     @apply px-4 py-6 max-w-screen-sm mx-auto;
   }
+  
+  .animate-delay-100 {
+    animation-delay: 100ms;
+  }
+  
+  .animate-delay-200 {
+    animation-delay: 200ms;
+  }
 }
 
 @keyframes enter {
