@@ -4,13 +4,19 @@ import { cn } from "@/lib/utils";
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Stethoscope, User } from 'lucide-react';
 
-interface ChatMessageProps {
+export interface ChatMessageProps {
   message: string;
   isAI: boolean;
   timestamp: Date;
+  messageType?: 'general' | 'warning' | 'success' | 'info';
 }
 
-const ChatMessage: React.FC<ChatMessageProps> = ({ message, isAI, timestamp }) => {
+const ChatMessage: React.FC<ChatMessageProps> = ({ 
+  message, 
+  isAI, 
+  timestamp, 
+  messageType = 'general' 
+}) => {
   return (
     <div className={cn(
       "flex w-full gap-3 mb-4",
@@ -28,7 +34,10 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message, isAI, timestamp }) =
         "rounded-xl px-4 py-3 max-w-[80%]",
         isAI 
           ? "bg-card text-card-foreground border border-border rounded-tl-none" 
-          : "bg-pandemic-blue text-white rounded-tr-none"
+          : "bg-pandemic-blue text-white rounded-tr-none",
+        messageType === 'warning' && isAI && "bg-amber-50 border-amber-200 text-amber-800",
+        messageType === 'success' && isAI && "bg-green-50 border-green-200 text-green-800",
+        messageType === 'info' && isAI && "bg-blue-50 border-blue-200 text-blue-800"
       )}>
         <p className="text-sm whitespace-pre-wrap">{message}</p>
         <p className="text-xs mt-1 opacity-70">
