@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import Layout from '@/components/Layout';
 import { Button } from '@/components/ui/button';
@@ -214,7 +213,7 @@ const HealthAssistant: React.FC = () => {
     
     if (input.includes('headache') || input.includes('head hurts')) {
       return {
-        message: "Headaches can have many causes including stress, dehydration, eyestrain, illness, or tension.\n\nFor relief:\n• Rest in a quiet, dark room\n• Apply a cool compress to your forehead\n• Stay hydrated\n• Consider appropriate over-the-counter pain relievers\n\n🚨 Seek immediate medical attention if your headache:\n• Is sudden and severe ("thunderclap")\n• Follows a head injury\n• Is accompanied by fever, stiff neck, confusion, seizures, double vision, weakness, numbness, or difficulty speaking\n\nWould you like me to help track your headache patterns?",
+        message: "Headaches can have many causes including stress, dehydration, eyestrain, illness, or tension.\n\nFor relief:\n• Rest in a quiet, dark room\n• Apply a cool compress to your forehead\n• Stay hydrated\n• Consider appropriate over-the-counter pain relievers\n\n🚨 Seek immediate medical attention if your headache:\n• Is sudden and severe (\"thunderclap\")\n• Follows a head injury\n• Is accompanied by fever, stiff neck, confusion, seizures, double vision, weakness, numbness, or difficulty speaking\n\nWould you like me to help track your headache patterns?",
         messageType: 'general'
       };
     }
